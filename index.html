@@ -2,24 +2,49 @@
 <html>
 <head>
     <title>Random Quiz Redirect</title>
+    <!-- Prevent caching -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <script>
-        window.onload = function() {
+        function redirectToRandomQuiz() {
             // Array of your quiz URLs (replace with your actual Google Form links)
             const quizUrls = [
                 'https://docs.google.com/forms/d/1hwwif_wyPmvz9hrlXzOTih23K6_-UwbRmDZmNTbyEIw/edit',
                 'https://docs.google.com/forms/d/1O1OpRcEr_gCBK67kL5n-2UquqEcdqU3BFFv_2h5is64/edit',
-
+                'https://docs.google.com/forms/d/1Ny7G4Ct_pcQppMvILFWM3Awz8EI1EP4yfQyhriJvnV8/edit',
+                'https://docs.google.com/forms/d/1SCexuVTXz6cMpNtEIAQrvrzO18hTKqvsSdbVM-O0Y2A/edit',
+                'https://docs.google.com/forms/d/1D6VgZbzc4SINrJuTy1pmnmtzin_rhQnvyG7FxDtyoXY/edit',
+                'https://docs.google.com/forms/d/1nxQA1qkd-k0qD3_nlPwEOM_tJ2CFDPckiHEJbzXyQpI/edit',
+                'https://docs.google.com/forms/d/1ePeQXaD-EWwVd8S8lZ30G_Gp6mRhh1SgT6M4Yb3xoUY/edit',
+                'https://docs.google.com/forms/d/16R7LD9DSBNqop0_LZtYmUG2PrqCKrNkmhkYsLI9Rr38/edit',
+                'https://docs.google.com/forms/d/1QCPS1NLsy699qM3UObk_DF0bnaQ6w-acyq7t9HCy_-g/edit',
+                'https://docs.google.com/forms/d/e/1FAIpQLSciU-L-JZUdB6EsaJtzP2wN5geA1fXl_6-sDGMKU9xh4QQAXg/viewform?usp=header'
             ];
+            
+            // Add timestamp to ensure randomness
+            const timestamp = new Date().getTime();
             
             // Get a random index
             const randomIndex = Math.floor(Math.random() * quizUrls.length);
             
+            // Add timestamp parameter to prevent caching
+            let redirectUrl = quizUrls[randomIndex];
+            redirectUrl += (redirectUrl.includes('?') ? '&' : '?') + 'timestamp=' + timestamp;
+            
             // Redirect to the random quiz
-            window.location.href = quizUrls[randomIndex];
+            window.location.href = redirectUrl;
         }
     </script>
 </head>
 <body>
-    <p>Redirecting to a random quiz...</p>
+    <h1>Random Quiz Selector</h1>
+    <p>You will be redirected to a random quiz in 2 seconds...</p>
+    <p>If you're not redirected automatically, <a href="#" onclick="redirectToRandomQuiz(); return false;">click here</a>.</p>
+    
+    <script>
+        // Small delay before redirect to show the page
+        setTimeout(redirectToRandomQuiz, 1000);
+    </script>
 </body>
 </html>
