@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Quiz Redirect</title>
+    <script>
+        window.onload = function() {
+            // Array of your quiz URLs (replace with your actual Google Form links)
+            const quizUrls = [
+                'https://forms.gle/link1',
+                'https://forms.gle/link2',
+                'https://forms.gle/link3',
+                'https://forms.gle/link4',
+                'https://forms.gle/link5',
+                'https://forms.gle/link6',
+                'https://forms.gle/link7',
+                'https://forms.gle/link8',
+                'https://forms.gle/link9',
+                'https://forms.gle/link10'
+            ];
+            
+            // Get a random index
+            const randomIndex = Math.floor(Math.random() * quizUrls.length);
+            
+            // Redirect to the random quiz
+            window.location.href = quizUrls[randomIndex];
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to a random quiz...</p>
+</body>
+</html>
